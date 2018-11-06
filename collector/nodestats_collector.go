@@ -212,6 +212,7 @@ func NewNodeStatsCollector(logstashEndpoint string) (Collector, error) {
 			[]string{"pipeline"},
 			nil,
 		),
+
 		PipelinePushDuration: prometheus.NewDesc(
 			prometheus.BuildFQName(Namespace, subsystem, "pipeline_push_duration_seconds_total"),
 			"pipeline_push_duration_seconds_total",
@@ -538,7 +539,7 @@ func (c *NodeStatsCollector) collect(ch chan<- prometheus.Metric) (*prometheus.D
 		ch <- prometheus.MustNewConstMetric(
 			c.PipelineEventsOut,
 			prometheus.CounterValue,
-			float64(pipeline.Events.Out),
+			float64(pipeline.Events.Out/1000),
 			pipelineID,
 		)
 
