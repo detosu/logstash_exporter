@@ -3,10 +3,11 @@ package collector
 // Pipeline type
 type Pipeline struct {
 	Events struct {
-		DurationInMillis int `json:"duration_in_millis"`
-		In               int `json:"in"`
-		Filtered         int `json:"filtered"`
-		Out              int `json:"out"`
+		DurationInMillis     int `json:"duration_in_millis"`
+		In                   int `json:"in"`
+		Filtered             int `json:"filtered"`
+		Out                  int `json:"out"`
+		PushDurationInMillis int `json:"queue_push_duration_in_millis"`
 	} `json:"events"`
 	Plugins struct {
 		Inputs []struct {
