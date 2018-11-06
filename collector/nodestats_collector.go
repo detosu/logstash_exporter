@@ -539,14 +539,14 @@ func (c *NodeStatsCollector) collect(ch chan<- prometheus.Metric) (*prometheus.D
 		ch <- prometheus.MustNewConstMetric(
 			c.PipelineEventsOut,
 			prometheus.CounterValue,
-			float64(pipeline.Events.Out/1000),
+			float64(pipeline.Events.Out),
 			pipelineID,
 		)
 
 		ch <- prometheus.MustNewConstMetric(
 			c.PipelinePushDuration,
 			prometheus.CounterValue,
-			float64(pipeline.Events.PushDurationInMillis),
+			float64(pipeline.Events.PushDurationInMillis/1000),
 			pipelineID,
 		)
 
